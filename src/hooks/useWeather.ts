@@ -109,7 +109,7 @@ const fetchWeather = async (cityName: string): Promise<ProcessedWeather> => {
 };
 
 export const useWeather = () => {
-  const cityName = import.meta.env.VITE_WEATHER_CITY || 'London';
+  const cityName = (window as any).__ENV__?.VITE_WEATHER_CITY || import.meta.env.VITE_WEATHER_CITY || 'London';
 
   return useQuery({
     queryKey: ['weather', cityName],

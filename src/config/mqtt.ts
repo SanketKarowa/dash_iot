@@ -1,7 +1,7 @@
 export const MQTT_CONFIG = {
   // Using ws connection for mqtt built-in browser support 
   // For Docker deployment, pass VITE_MQTT_BROKER_URL as an environment variable
-  brokerUrl: import.meta.env.VITE_MQTT_BROKER_URL || 'ws://localhost:9001',
+  brokerUrl: (window as any).__ENV__?.VITE_MQTT_BROKER_URL || import.meta.env.VITE_MQTT_BROKER_URL || 'ws://localhost:9001',
   options: {
     protocolVersion: 4 as const,
     clean: true,

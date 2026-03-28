@@ -24,8 +24,13 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Copy the default Nginx config to the image
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
 # Expose port 80
 EXPOSE 80
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
 # Run nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
