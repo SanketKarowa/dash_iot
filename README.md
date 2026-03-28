@@ -27,6 +27,22 @@ A modern, sleek, and responsive IoT home automation dashboard built with React 1
 - **Communication**: MQTT.js (via WebSockets)
 - **Icons**: Lucide React
 
+## ⚙️ Configuration
+
+The dashboard's MQTT broker address is configurable via environment variables (Vite-prefixed).
+
+### Local Development
+Create a `.env` file in the root:
+```env
+VITE_MQTT_BROKER_URL=ws://your-broker-url:9001
+```
+
+### Docker Deployment
+Pass the broker URL as an environment variable during container startup:
+```bash
+docker run -p 80:80 -e VITE_MQTT_BROKER_URL=ws://192.168.1.100:9001 my-solar-dashboard
+```
+
 ## 🚀 Quick Start
 
 ### Prerequisites

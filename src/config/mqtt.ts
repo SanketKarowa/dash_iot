@@ -1,7 +1,7 @@
 export const MQTT_CONFIG = {
   // Using ws connection for mqtt built-in browser support 
-  // Node-RED broker at 192.168.29.87 must have websocket enabled. Port 9001 is standard.
-  brokerUrl: 'ws://192.168.29.87:9001',
+  // For Docker deployment, pass VITE_MQTT_BROKER_URL as an environment variable
+  brokerUrl: import.meta.env.VITE_MQTT_BROKER_URL || 'ws://localhost:9001',
   options: {
     protocolVersion: 4 as const,
     clean: true,
