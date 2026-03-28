@@ -93,13 +93,13 @@ export function WeatherWidget() {
   const uvInfo = getUvStatus(weather.uvIndex);
 
   return (
-    <GlassCard className="flex flex-col h-full min-h-[400px] relative overflow-hidden flex-grow group">
+    <GlassCard className="flex flex-col h-full relative overflow-hidden group">
       {/* Dynamic Background Accents */}
       <div className="absolute -top-24 -left-24 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] group-hover:bg-indigo-500/10 transition-colors duration-700" />
       <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-cyan-500/5 rounded-full blur-[80px] group-hover:bg-cyan-500/10 transition-colors duration-700" />
       
       {/* Header section */}
-      <div className="flex justify-between items-start mb-8 relative z-10">
+      <div className="flex justify-between items-start mb-5 relative z-10">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.2)]">
             <MapPin className="w-5 h-5 text-indigo-400" />
@@ -119,7 +119,7 @@ export function WeatherWidget() {
       </div>
 
       {/* Main Temp Row */}
-      <div className="flex items-center justify-between mb-8 relative z-10">
+      <div className="flex items-center justify-between mb-5 relative z-10">
         <div className="flex items-start gap-1">
           <span className="text-7xl font-light tracking-tighter text-white font-mono leading-none drop-shadow-2xl">
             {Math.round(weather.temperature)}
@@ -137,7 +137,7 @@ export function WeatherWidget() {
       </div>
 
       {/* Detailed Weather Stats Grid */}
-      <div className="grid grid-cols-2 gap-4 mb-8 relative z-10">
+      <div className="grid grid-cols-2 gap-3 mb-5 relative z-10">
         <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
           <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
             <Droplets className="w-4 h-4" />
@@ -177,7 +177,7 @@ export function WeatherWidget() {
       </div>
 
       {/* Air Quality (AQI) Card - Full Width at bottom */}
-      <div className="mt-auto relative z-10">
+      <div className="relative z-10">
         <div className="p-4 rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 shadow-inner">
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">

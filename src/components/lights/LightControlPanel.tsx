@@ -2,7 +2,7 @@ import { GlassCard } from '../shared/GlassCard';
 import { LightSwitch } from './LightSwitch';
 import { MasterSwitch } from './MasterSwitch';
 import { TOPICS } from '../../config/mqtt';
-import { Lightbulb, Info } from 'lucide-react';
+import { Lightbulb } from 'lucide-react';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 
 export function LightControlPanel() {
@@ -35,7 +35,7 @@ export function LightControlPanel() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-6 flex-grow relative z-10 py-2">
+      <div className="flex flex-col gap-4 relative z-10">
         <LightSwitch 
           name="Indoors"
           commandTopic={TOPICS.PUBLISH.RELAY_1_CMD}
@@ -51,19 +51,9 @@ export function LightControlPanel() {
           commandTopic={TOPICS.PUBLISH.RELAY_3_CMD}
           statusTopic={TOPICS.SUBSCRIBE.RELAY_3_STATUS}
         />
-
-        {/* Informational helper to fill space and look professional */}
-        <div className="mt-auto p-4 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm flex gap-3 items-center">
-          <div className="shrink-0">
-            <Info className="w-5 h-5 text-amber-500/50" />
-          </div>
-          <p className="text-[11px] leading-relaxed text-[var(--text-muted)] italic">
-            Automated relays handle connected lighting subsystems. Manual toggles will override current scheduled automation.
-          </p>
-        </div>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-white/10 relative z-10">
+      <div className="mt-5 pt-5 border-t border-white/10 relative z-10">
         <MasterSwitch />
       </div>
     </GlassCard>

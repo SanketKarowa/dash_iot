@@ -25,13 +25,11 @@ function App() {
           <BatteryPanel />
           
           {/* Next row of cards */}
-          <div className="col-span-1 xl:col-span-1 flex flex-col gap-6 h-full">
+          <div className="col-span-1 xl:col-span-1 flex flex-col gap-6">
             <MainsIndicator />
-            <div className="flex-grow">
-              <WeatherWidget />
-            </div>
+            <WeatherWidget />
           </div>
-          <div className="col-span-1 xl:col-span-1 h-full">
+          <div className="col-span-1 xl:col-span-1">
             <LightControlPanel />
           </div>
           <div className="col-span-1 md:col-span-2 xl:col-span-1">
