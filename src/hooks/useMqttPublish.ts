@@ -6,7 +6,7 @@ export function useMqttPublish() {
 
   const publish = useCallback((topic: string, message: string, retain: boolean = false) => {
     if (status === 'connected' && client) {
-      client.publish(topic, message, { retain }, (err: any) => {
+      client.publish(topic, message, { retain }, (err?: Error | null) => {
         if (err) {
           console.error(`Error publishing to ${topic}:`, err);
         }

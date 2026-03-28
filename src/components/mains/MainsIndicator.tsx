@@ -2,7 +2,7 @@ import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 import { TOPICS } from '../../config/mqtt';
 import { GlassCard } from '../shared/GlassCard';
 import { Activity } from 'lucide-react';
-import { cn } from '../shared/GlassCard';
+import { cn } from '../../lib/utils';
 
 export function MainsIndicator() {
   const mainsStatus = useMqttSubscription(TOPICS.SUBSCRIBE.MAINS);

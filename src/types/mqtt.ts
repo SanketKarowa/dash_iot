@@ -1,4 +1,6 @@
+import type { MqttClient } from 'mqtt';
+
 export interface MqttContextType {
-  client: any | null;
+  client: MqttClient | null;
   status: 'connecting' | 'connected' | 'reconnecting' | 'disconnected';
 }

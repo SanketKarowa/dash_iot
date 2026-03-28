@@ -8,7 +8,7 @@ export function useMqttSubscription(topic: string) {
   useEffect(() => {
     if (status !== 'connected' || !client) return;
 
-    client.subscribe(topic, (err: any) => {
+    client.subscribe(topic, (err: Error | null) => {
       if (err) console.error(`Subscription error for ${topic}:`, err);
     });
 

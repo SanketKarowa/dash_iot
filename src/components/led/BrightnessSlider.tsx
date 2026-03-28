@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as Slider from '@radix-ui/react-slider';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 import { useMqttPublish } from '../../hooks/useMqttPublish';
@@ -8,23 +8,23 @@ import { TOPICS } from '../../config/mqtt';
 export function BrightnessSlider() {
   const publish = useMqttPublish();
   const feedbackValue = useMqttSubscription(TOPICS.SUBSCRIBE.LED_1_BRIGHTNESS);
-  
-  const [value, setValue] = useState([0]);
 
-  useEffect(() => {
-    if (feedbackValue !== null) {
-      const parsed = parseInt(feedbackValue, 10);
-      if (!isNaN(parsed)) {
-        setValue([parsed]);
-      }
-    }
-  }, [feedbackValue]);
+  const [localValue, setLocalValue] = useState<number[] | null>(null);
+
+  // When dragging, use local value. Otherwise, derive from MQTT feedback.
+  const mqttValue = feedbackValue !== null ? (() => {
+    const parsed = parseInt(feedbackValue, 10);
+    return !isNaN(parsed) ? [parsed] : [0];
+  })() : [0];
+
+  const displayValue = localValue ?? mqttValue;
 
   const handleValueChange = (newVal: number[]) => {
-    setValue(newVal);
+    setLocalValue(newVal);
   };
 
   const handleValueCommit = (newVal: number[]) => {
+    setLocalValue(null);
     const val = newVal[0].toString();
     publish(TOPICS.PUBLISH.LED_1_CMD_BRIGHTNESS, val);
     publish(TOPICS.PUBLISH.LED_2_CMD_BRIGHTNESS, val);
@@ -36,12 +36,12 @@ export function BrightnessSlider() {
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
           <Sun className="w-4 h-4 text-[var(--accent-primary)]" /> LED Brightness
         </span>
-        <span className="font-mono text-sm font-bold text-[var(--text-accent)]">{value[0]}</span>
+        <span className="font-mono text-sm font-bold text-[var(--text-accent)]">{displayValue[0]}</span>
       </div>
       
       <Slider.Root
         className="relative flex items-center select-none touch-none w-full h-5 mt-2"
-        value={value}
+        value={displayValue}
         max={255}
         step={1}
         onValueChange={handleValueChange}

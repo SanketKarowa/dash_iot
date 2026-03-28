@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as Switch from '@radix-ui/react-switch';
 import { Lightbulb, Loader2 } from 'lucide-react';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
@@ -14,15 +14,17 @@ export function LightSwitch({ name, commandTopic, statusTopic }: LightSwitchProp
   const status = useMqttSubscription(statusTopic);
   const publish = useMqttPublish();
   const [isPending, setIsPending] = useState(false);
+  const [prevStatus, setPrevStatus] = useState(status);
 
   const isOn = status?.toLowerCase() === 'on';
 
-  // Clear pending state when actual status matches our local expectation
-  useEffect(() => {
+  // Clear pending state when status changes (React-safe state update during render)
+  if (prevStatus !== status) {
+    setPrevStatus(status);
     if (isPending) {
       setIsPending(false);
     }
-  }, [status]);
+  }
 
   const handleToggle = (checked: boolean) => {
     setIsPending(true);
