@@ -6,6 +6,7 @@ import { MqttContextType } from '../types/mqtt';
 const MqttContext = createContext<MqttContextType>({
   client: null,
   status: 'disconnected',
+  messages: {},
 });
 
 export function MqttProvider({ children }: { children: ReactNode }) {

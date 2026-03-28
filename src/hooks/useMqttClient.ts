@@ -7,6 +7,7 @@ export function useMqttClient(): MqttContextType {
   const clientRef = useRef<MqttClient | null>(null);
   const [status, setStatus] = useState<MqttContextType['status']>('connecting');
   const [client, setClient] = useState<MqttClient | null>(null);
+  const [messages, setMessages] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const mqttClient = mqtt.connect(MQTT_CONFIG.brokerUrl, MQTT_CONFIG.options);
@@ -30,10 +31,18 @@ export function useMqttClient(): MqttContextType {
       setStatus('disconnected');
     });
 
+    // Centralised message handler to avoid multiple listeners
+    mqttClient.on('message', (topic, payload) => {
+      setMessages(prev => ({
+        ...prev,
+        [topic]: payload.toString()
+      }));
+    });
+
     return () => {
       mqttClient.end();
     };
   }, []);
 
-  return { client, status };
+  return { client, status, messages };
 }

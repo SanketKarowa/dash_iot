@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useMqttContext } from '../providers/MqttProvider';
 
 export function useMqttSubscription(topic: string) {
-  const { client, status } = useMqttContext();
-  const [payload, setPayload] = useState<string | null>(null);
+  const { client, status, messages } = useMqttContext();
 
   useEffect(() => {
     if (status !== 'connected' || !client) return;
@@ -12,19 +11,10 @@ export function useMqttSubscription(topic: string) {
       if (err) console.error(`Subscription error for ${topic}:`, err);
     });
 
-    const handleMessage = (msgTopic: string, message: Buffer) => {
-      if (msgTopic === topic) {
-        setPayload(message.toString());
-      }
-    };
-
-    client.on('message', handleMessage);
-
     return () => {
-      client.removeListener('message', handleMessage);
       client.unsubscribe(topic);
     };
   }, [client, status, topic]);
 
-  return payload;
+  return messages[topic] ?? null;
 }
