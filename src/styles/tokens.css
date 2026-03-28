@@ -1,30 +1,30 @@
 /* ─────────── DARK MODE (default) ─────────── */
 :root,
 :root[data-theme="dark"] {
-  --bg-base:              #0b0e1a;
-  --bg-elevated:          #0f1225;
-  --card-surface:         rgba(21, 25, 51, 0.6);
-  --card-surface-hover:   rgba(26, 31, 64, 0.8);
-  --border:               rgba(148, 163, 184, 0.08);
-  --card-border:          1px solid rgba(255,255,255,0.06);
-  --card-shadow:          none;
-  --card-blur:            blur(16px);
+  --bg-base:              #09090b;
+  --bg-elevated:          #18181b;
+  --card-surface:         rgba(255, 255, 255, 0.03);
+  --card-surface-hover:   rgba(255, 255, 255, 0.05);
+  --border:               rgba(255, 255, 255, 0.08);
+  --card-border:          1px solid rgba(255, 255, 255, 0.1);
+  --card-shadow:          0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --card-blur:            blur(24px);
 
-  --accent-primary:       #7c5bf5;
-  --accent-primary-light: #a78bfa;
-  --accent-primary-glow:  rgba(124, 91, 245, 0.15);
-  --accent-secondary:     #6366f1;
-  --accent-tertiary:      #818cf8;
+  --accent-primary:       #0ea5e9;
+  --accent-primary-light: #38bdf8;
+  --accent-primary-glow:  rgba(14, 165, 233, 0.25);
+  --accent-secondary:     #2563eb;
+  --accent-tertiary:      #0284c7;
 
-  --text-primary:         #e2e8f0;
-  --text-secondary:       #94a3b8;
-  --text-muted:           #475569;
-  --text-accent:          #a78bfa;
+  --text-primary:         #f8fafc;
+  --text-secondary:       #a1a1aa;
+  --text-muted:           #52525b;
+  --text-accent:          #38bdf8;
 
-  --gradient-card:        linear-gradient(135deg, rgba(21,25,51,0.6) 0%, rgba(26,31,64,0.6) 100%);
-  --gradient-accent:      linear-gradient(135deg, #7c5bf5 0%, #6366f1 100%);
-  --gradient-slider:      linear-gradient(90deg, #1e1b4b 0%, #7c5bf5 50%, #e2e8f0 100%);
-  --gradient-night-glow:  radial-gradient(circle, rgba(124,91,245,0.15) 0%, transparent 70%);
+  --gradient-card:        linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+  --gradient-accent:      linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  --gradient-slider:      linear-gradient(90deg, rgba(255,255,255,0.05) 0%, #0ea5e9 50%, #f8fafc 100%);
+  --gradient-night-glow:  radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.12), transparent 40%), radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.12), transparent 50%);
 }
 
 /* ─────────── LIGHT MODE ─────────── */

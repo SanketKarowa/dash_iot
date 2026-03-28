@@ -1,4 +1,5 @@
 import * as Switch from '@radix-ui/react-switch';
+import { Lightbulb } from 'lucide-react';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 import { useMqttPublish } from '../../hooks/useMqttPublish';
 
@@ -23,7 +24,7 @@ export function LightSwitch({ name, commandTopic, statusTopic }: LightSwitchProp
     <div className="flex items-center justify-between p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] transition-colors">
       <div className="flex flex-col gap-1">
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
-          💡 {name}
+          <Lightbulb className="w-4 h-4 text-[var(--accent-primary)]" /> {name}
         </span>
         <span className="text-sm text-[var(--text-secondary)]">Status: {status ? (isOn ? 'On' : 'Off') : '---'}</span>
       </div>

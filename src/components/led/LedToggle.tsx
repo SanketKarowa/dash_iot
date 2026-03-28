@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as Switch from '@radix-ui/react-switch';
+import { Lightbulb } from 'lucide-react';
 import { useMqttPublish } from '../../hooks/useMqttPublish';
 import { TOPICS } from '../../config/mqtt';
 
@@ -29,7 +30,7 @@ export function LedToggle() {
     <div className="flex items-center justify-between p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] transition-colors">
       <div className="flex flex-col gap-1">
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
-          💡 MRB LED Strip
+          <Lightbulb className="w-4 h-4 text-[var(--accent-primary)]" /> MRB LED Strip
         </span>
         <span className="text-sm text-[var(--text-secondary)]">Status: {isOn ? 'On (Manual)' : 'Off (Auto)'}</span>
       </div>

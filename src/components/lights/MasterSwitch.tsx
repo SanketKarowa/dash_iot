@@ -1,4 +1,5 @@
 import * as Switch from '@radix-ui/react-switch';
+import { Zap } from 'lucide-react';
 import { useMqttPublish } from '../../hooks/useMqttPublish';
 import { TOPICS } from '../../config/mqtt';
 
@@ -16,7 +17,7 @@ export function MasterSwitch() {
     <div className="flex items-center justify-between p-4 rounded-xl border border-[var(--accent-primary)] bg-[var(--accent-primary-glow)] transition-colors mt-4">
       <div className="flex flex-col gap-1">
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
-          🔧 Handy-Mains
+          <Zap className="w-4 h-4 text-[var(--accent-primary)]" /> Handy-Mains
           <span className="text-xs bg-[var(--accent-primary)] text-white px-2 py-0.5 rounded-full uppercase tracking-wide">Master</span>
         </span>
         <span className="text-sm text-[var(--text-secondary)]">Controls all relays</span>

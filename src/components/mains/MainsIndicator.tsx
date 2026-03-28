@@ -12,9 +12,11 @@ export function MainsIndicator() {
 
   return (
     <GlassCard className="flex flex-col justify-center h-full">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
+          <Activity className="w-5 h-5 text-cyan-500" />
+        </div>
         <h2 className="text-xl font-semibold text-[var(--text-primary)]">Mains Power</h2>
-        <Activity className="w-5 h-5 text-[var(--text-secondary)]" />
       </div>
       
       <div className="flex items-center gap-4">

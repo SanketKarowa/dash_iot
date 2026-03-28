@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Slider from '@radix-ui/react-slider';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 import { useMqttPublish } from '../../hooks/useMqttPublish';
+import { Sun } from 'lucide-react';
 import { TOPICS } from '../../config/mqtt';
 
 export function BrightnessSlider() {
@@ -33,7 +34,7 @@ export function BrightnessSlider() {
     <div className="flex flex-col gap-3 mt-4 p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)]">
       <div className="flex justify-between items-center">
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
-          ☀️ LED Brightness
+          <Sun className="w-4 h-4 text-[var(--accent-primary)]" /> LED Brightness
         </span>
         <span className="font-mono text-sm font-bold text-[var(--text-accent)]">{value[0]}</span>
       </div>
