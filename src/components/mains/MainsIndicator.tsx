@@ -11,15 +11,15 @@ export function MainsIndicator() {
   const isUnknown = mainsStatus === null;
 
   return (
-    <GlassCard className="flex flex-col justify-center h-full">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_12px_rgba(6,182,212,0.15)]">
-          <Activity className="w-5 h-5 text-cyan-500" />
+    <GlassCard className="flex flex-col justify-center h-fit p-4 lg:p-5">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="p-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.15)]">
+          <Activity className="w-4 h-4 text-cyan-500" />
         </div>
-        <h2 className="text-xl font-semibold text-[var(--text-primary)]">Mains Power</h2>
+        <h2 className="text-lg font-semibold text-[var(--text-primary)]">Mains Status</h2>
       </div>
       
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <div 
           className={cn(
             "w-4 h-4 rounded-full transition-all duration-300",

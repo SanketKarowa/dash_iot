@@ -10,11 +10,12 @@
   --card-shadow:          0 8px 32px 0 rgba(0, 0, 0, 0.4);
   --card-blur:            blur(24px);
 
-  --accent-primary:       #0ea5e9;
-  --accent-primary-light: #38bdf8;
-  --accent-primary-glow:  rgba(14, 165, 233, 0.25);
-  --accent-secondary:     #2563eb;
-  --accent-tertiary:      #0284c7;
+  --accent-primary:       #22d3ee;
+  --accent-primary-light: #67e8f9;
+  --accent-primary-glow:  rgba(34, 211, 238, 0.45);
+  --accent-primary-neon:  #06b6d4;
+  --accent-secondary:     #0ea5e9;
+  --accent-tertiary:      #0891b2;
 
   --text-primary:         #f8fafc;
   --text-secondary:       #a1a1aa;
