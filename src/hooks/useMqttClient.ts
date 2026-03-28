@@ -31,6 +31,10 @@ export function useMqttClient(): MqttContextType {
       setStatus('disconnected');
     });
 
+    mqttClient.on('close', () => {
+      setStatus('disconnected');
+    });
+
     // Centralised message handler to avoid multiple listeners
     mqttClient.on('message', (topic, payload) => {
       setMessages(prev => ({
@@ -40,7 +44,8 @@ export function useMqttClient(): MqttContextType {
     });
 
     return () => {
-      mqttClient.end();
+      setStatus('disconnected');
+      mqttClient.end(); // Graceful end avoids "WebSocket closed before established" warning in dev
     };
   }, []);
 

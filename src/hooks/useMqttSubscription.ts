@@ -5,7 +5,8 @@ export function useMqttSubscription(topic: string) {
   const { client, status, messages } = useMqttContext();
 
   useEffect(() => {
-    if (status !== 'connected' || !client) return;
+    // Client must be connected and not in a disconnecting/closing state
+    if (status !== 'connected' || !client || !client.connected) return;
 
     client.subscribe(topic, (err: Error | null) => {
       if (err) console.error(`Subscription error for ${topic}:`, err);
