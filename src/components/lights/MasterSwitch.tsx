@@ -20,11 +20,10 @@ export function MasterSwitch() {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 rounded-xl border border-[var(--accent-primary)] bg-[var(--accent-primary-glow)] transition-colors mt-4">
+    <div className="flex items-center justify-between p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] transition-colors mt-4">
       <div className="flex flex-col gap-1">
         <span className="font-medium text-[var(--text-primary)] flex items-center gap-2">
-          <Zap className="w-4 h-4 text-amber-500 fill-amber-500/20 drop-shadow-[0_0_8px_rgba(245,158,11,0.4)]" /> Handy-Mains
-          <span className="text-xs bg-amber-500 text-black font-bold px-2 py-0.5 rounded-full uppercase tracking-wide shadow-sm">Master</span>
+          <Zap className="w-4 h-4 text-amber-500/80 fill-amber-500/10" /> Handy-Mains
         </span>
         <span className="text-sm text-[var(--text-secondary)]">
           {isPending ? (
