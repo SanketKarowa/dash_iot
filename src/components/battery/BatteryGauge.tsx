@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Battery } from 'lucide-react';
 import { getBatteryColor } from '../../utils/batteryColor';
+import { memo } from 'react';
 
 interface BatteryGaugeProps {
   name: string;
@@ -9,7 +10,7 @@ interface BatteryGaugeProps {
   max: number;
 }
 
-export function BatteryGauge({ name, voltage, min, max }: BatteryGaugeProps) {
+export const BatteryGauge = memo(({ name, voltage, min, max }: BatteryGaugeProps) => {
   const v = voltage ?? min; 
   const percentage = Math.max(0, Math.min(100, ((v - min) / (max - min)) * 100));
   const color = getBatteryColor(v, min, max);
@@ -128,4 +129,4 @@ export function BatteryGauge({ name, voltage, min, max }: BatteryGaugeProps) {
       </div>
     </div>
   );
-}
+});

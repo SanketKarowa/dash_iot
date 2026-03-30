@@ -4,7 +4,9 @@ import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 import { TOPICS } from '../../config/mqtt';
 import { BatteryCharging } from 'lucide-react';
 
-export function BatteryPanel() {
+import { memo } from 'react';
+
+export const BatteryPanel = memo(() => {
   const b1 = useMqttSubscription(TOPICS.SUBSCRIBE.BATTERY_1);
   const b2 = useMqttSubscription(TOPICS.SUBSCRIBE.BATTERY_2);
   const b3 = useMqttSubscription(TOPICS.SUBSCRIBE.BATTERY_3);
@@ -26,4 +28,4 @@ export function BatteryPanel() {
       </div>
     </GlassCard>
   );
-}
+});

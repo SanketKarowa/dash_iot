@@ -5,7 +5,9 @@ import { TOPICS } from '../../config/mqtt';
 import { Lightbulb } from 'lucide-react';
 import { useMqttSubscription } from '../../hooks/useMqttSubscription';
 
-export function LightControlPanel() {
+import { memo } from 'react';
+
+export const LightControlPanel = memo(() => {
   const r1 = useMqttSubscription(TOPICS.SUBSCRIBE.RELAY_1_STATUS);
   const r2 = useMqttSubscription(TOPICS.SUBSCRIBE.RELAY_2_STATUS);
   const r3 = useMqttSubscription(TOPICS.SUBSCRIBE.RELAY_3_STATUS);
@@ -58,4 +60,4 @@ export function LightControlPanel() {
       </div>
     </GlassCard>
   );
-}
+});

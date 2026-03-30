@@ -35,17 +35,33 @@ export function useMqttClient(): MqttContextType {
       setStatus('disconnected');
     });
 
-    // Centralised message handler to avoid multiple listeners
-    mqttClient.on('message', (topic, payload) => {
+    // Centralised message handler with throttling to avoid UI lag
+    // We use a local state-buffer to batch updates if they come too fast
+    let messageBuffer: Record<string, string> = {};
+    let throttleTimeout: NodeJS.Timeout | null = null;
+
+    const flushBuffer = () => {
       setMessages(prev => ({
         ...prev,
-        [topic]: payload.toString()
+        ...messageBuffer
       }));
+      messageBuffer = {};
+      throttleTimeout = null;
+    };
+
+    mqttClient.on('message', (topic, payload) => {
+      messageBuffer[topic] = payload.toString();
+      
+      // Throttle updates to 10fps (100ms) to prevent React bottlenecking
+      if (!throttleTimeout) {
+        throttleTimeout = setTimeout(flushBuffer, 100);
+      }
     });
 
     return () => {
+      if (throttleTimeout) clearTimeout(throttleTimeout);
       setStatus('disconnected');
-      mqttClient.end(); // Graceful end avoids "WebSocket closed before established" warning in dev
+      mqttClient.end();
     };
   }, []);
 
